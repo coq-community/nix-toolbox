@@ -78,7 +78,8 @@ with initial.lib; let
     coq_version = pkgs.coqPackages.coq.coq-version;
 
     nativeBuildInputs = optionals (!do-nothing)
-      (old.propagatedBuildInputs or []);
+      (old.propagatedBuildInputs or []) ++
+      (with selected-instance.pkgs; [ remarshal ]);
 
     buildInputs = optionals (!do-nothing)
       (old.buildInputs or []);
